@@ -8,6 +8,7 @@ class App extends React.Component {
   render() {
     let user = {
       name: "Anna",
+      age: 24,
       hobbies: ["Sports", "Ayy Lmao", "Reading"]
     }
     return (
@@ -16,9 +17,7 @@ class App extends React.Component {
           <Header/>
         </div>
         <div className="row">
-          <Home user={user}>
-            <p>That's it, that's everything</p>
-          </Home>
+          <Home user={user}/>
         </div>
       </div>
     )
