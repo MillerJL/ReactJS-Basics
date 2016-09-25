@@ -7,17 +7,18 @@ export class Home extends React.Component {
       age: props.user.initialAge,
       status: 0
     }
-    setTimeout(() => {
-      this.setState({
-        status: 1
-      })
-    }, 3000)
   }
 
   onMakeOlder () {
     this.setState({
       age: this.state.age += 3
     })
+    
+    setTimeout(() => {
+      this.setState({
+        status: 1
+      })
+    }, 3000)
   }
 
   render () {

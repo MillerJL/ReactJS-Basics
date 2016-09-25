@@ -83,7 +83,7 @@
 	    value: function render() {
 	      var user = {
 	        name: "Anna",
-	        age: 24,
+	        initialAge: 24,
 	        hobbies: ["Sports", "Ayy Lmao", "Reading"]
 	      };
 	      return _react2.default.createElement(
@@ -22033,7 +22033,7 @@
 	        _react2.default.createElement(
 	          "a",
 	          { className: "navbar-brand", href: "#" },
-	          "Project name"
+	          "ReactJS Basics"
 	        ),
 	        _react2.default.createElement(
 	          "ul",
@@ -22044,30 +22044,12 @@
 	            _react2.default.createElement(
 	              "a",
 	              { className: "nav-link", href: "#" },
-	              "Home ",
+	              "Home",
 	              _react2.default.createElement(
 	                "span",
 	                { className: "sr-only" },
 	                "(current)"
 	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            "li",
-	            { className: "nav-item" },
-	            _react2.default.createElement(
-	              "a",
-	              { className: "nav-link", href: "#" },
-	              "About"
-	            )
-	          ),
-	          _react2.default.createElement(
-	            "li",
-	            { className: "nav-item" },
-	            _react2.default.createElement(
-	              "a",
-	              { className: "nav-link", href: "#" },
-	              "Contact"
 	            )
 	          )
 	        )
@@ -22114,14 +22096,24 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
 	
-	    _this.age = props.user.age;
+	    _this.state = {
+	      age: props.user.initialAge,
+	      status: 0
+	    };
+	    setTimeout(function () {
+	      _this.setState({
+	        status: 1
+	      });
+	    }, 3000);
 	    return _this;
 	  }
 	
 	  _createClass(Home, [{
 	    key: "onMakeOlder",
 	    value: function onMakeOlder() {
-	      this.age++;
+	      this.setState({
+	        age: this.state.age += 3
+	      });
 	    }
 	  }, {
 	    key: "render",
@@ -22138,7 +22130,14 @@
 	          "Your name is ",
 	          this.props.user.name,
 	          ", your age is ",
-	          this.age
+	          this.state.age
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "Status: ",
+	          this.state.status,
+	          " "
 	        ),
 	        _react2.default.createElement(
 	          "div",
@@ -22178,7 +22177,7 @@
 	Home.propTypes = {
 	  user: _react2.default.PropTypes.shape({
 	    name: _react2.default.PropTypes.string,
-	    age: _react2.default.PropTypes.number
+	    initialAge: _react2.default.PropTypes.number
 	  })
 	};
 
