@@ -3,9 +3,11 @@ import React from 'react'
 export class Home extends React.Component {
   constructor (props) {
     super()
+
     this.state = {
       age: props.user.initialAge,
-      status: 0
+      status: 0,
+      homeLink: "Changed Link"
     }
   }
 
@@ -14,11 +16,15 @@ export class Home extends React.Component {
       age: this.state.age += 3
     })
 
-    setTimeout(() => {
+    setTimeout( () => {
       this.setState({
         status: 1
       })
     }, 3000)
+  }
+
+  onChangeLink () {
+    this.props.changeLink(this.state.homeLink)
   }
 
   render () {
@@ -30,11 +36,12 @@ export class Home extends React.Component {
         <div>
           <h4>Hobbies</h4>
           <ul>
-            { this.props.user.hobbies.map((hobby, index) => <li key={index}>{hobby}</li>) }
+            { this.props.user.hobbies.map( (hobby, index) => <li key={index}>{hobby}</li>) }
           </ul>
         </div>
         <button onClick={ () => this.onMakeOlder() } className="btn btn-primary">Make me older!</button>
         <hr/>
+        <button onClick={ this.onChangeLink.bind(this) } className="btn btn-default">Change Header Link</button>
         <button onClick={ this.props.greet } className="btn btn-default">Greet</button>
       </div>
     )
