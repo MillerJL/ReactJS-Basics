@@ -87,24 +87,12 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-md-2' },
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              'Ayy Lmao!'
-	            )
-	          )
+	          _react2.default.createElement(_Header.Header, null)
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-md-2' },
-	            _react2.default.createElement(_Home.Home, null)
-	          )
+	          _react2.default.createElement(_Home.Home, null)
 	        )
 	      );
 	    }
@@ -22036,25 +22024,45 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "nav",
-	        { className: "navbar navbar-default" },
+	        { className: "navbar navbar-static-top navbar-dark bg-inverse" },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "container" },
+	          "a",
+	          { className: "navbar-brand", href: "#" },
+	          "Project name"
+	        ),
+	        _react2.default.createElement(
+	          "ul",
+	          { className: "nav navbar-nav" },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "navbar-header" },
+	            "li",
+	            { className: "nav-item active" },
 	            _react2.default.createElement(
-	              "ul",
-	              { className: "nav navbar-nav" },
+	              "a",
+	              { className: "nav-link", href: "#" },
+	              "Home ",
 	              _react2.default.createElement(
-	                "li",
-	                null,
-	                _react2.default.createElement(
-	                  "a",
-	                  { href: "#" },
-	                  "Home"
-	                )
+	                "span",
+	                { className: "sr-only" },
+	                "(current)"
 	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            { className: "nav-item" },
+	            _react2.default.createElement(
+	              "a",
+	              { className: "nav-link", href: "#" },
+	              "About"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            { className: "nav-item" },
+	            _react2.default.createElement(
+	              "a",
+	              { className: "nav-link", href: "#" },
+	              "Contact"
 	            )
 	          )
 	        )
@@ -22105,6 +22113,14 @@
 	  _createClass(Home, [{
 	    key: 'render',
 	    value: function render() {
+	      var content = 'AIDS';
+	      if (true) {
+	        content = _react2.default.createElement(
+	          'p',
+	          null,
+	          'Hello!'
+	        );
+	      }
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -22112,7 +22128,8 @@
 	          'p',
 	          null,
 	          'In a new Component!'
-	        )
+	        ),
+	        content
 	      );
 	    }
 	  }]);
