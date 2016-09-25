@@ -13,7 +13,7 @@ export class Home extends React.Component {
     this.setState({
       age: this.state.age += 3
     })
-    
+
     setTimeout(() => {
       this.setState({
         status: 1
@@ -35,6 +35,7 @@ export class Home extends React.Component {
         </div>
         <button onClick={ () => this.onMakeOlder() } className="btn btn-primary">Make me older!</button>
         <hr/>
+        <button onClick={ this.props.greet } className="btn btn-default">Greet</button>
       </div>
     )
   }
@@ -44,5 +45,6 @@ Home.propTypes = {
   user: React.PropTypes.shape({
     name: React.PropTypes.string,
     initialAge: React.PropTypes.number
-  })
+  }),
+  greet: React.PropTypes.func
 }

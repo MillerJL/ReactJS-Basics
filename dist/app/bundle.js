@@ -79,6 +79,11 @@
 	  }
 	
 	  _createClass(App, [{
+	    key: 'onGreet',
+	    value: function onGreet() {
+	      alert("Hello!");
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var user = {
@@ -97,7 +102,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_Home.Home, { user: user })
+	          _react2.default.createElement(_Home.Home, { user: user, greet: this.onGreet })
 	        )
 	      );
 	    }
@@ -22001,64 +22006,42 @@
 	});
 	exports.Header = undefined;
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Header = exports.Header = function (_React$Component) {
-	  _inherits(Header, _React$Component);
-	
-	  function Header() {
-	    _classCallCheck(this, Header);
-	
-	    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
-	  }
-	
-	  _createClass(Header, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "nav",
-	        { className: "navbar navbar-static-top navbar-dark bg-inverse" },
+	// Stateless component
+	var Header = exports.Header = function Header(props) {
+	  return _react2.default.createElement(
+	    "nav",
+	    { className: "navbar navbar-static-top navbar-dark bg-inverse" },
+	    _react2.default.createElement(
+	      "a",
+	      { className: "navbar-brand", href: "#" },
+	      "ReactJS Basics"
+	    ),
+	    _react2.default.createElement(
+	      "ul",
+	      { className: "nav navbar-nav" },
+	      _react2.default.createElement(
+	        "li",
+	        { className: "nav-item" },
 	        _react2.default.createElement(
 	          "a",
-	          { className: "navbar-brand", href: "#" },
-	          "ReactJS Basics"
-	        ),
-	        _react2.default.createElement(
-	          "ul",
-	          { className: "nav navbar-nav" },
+	          { className: "nav-link", href: "#" },
+	          "Home",
 	          _react2.default.createElement(
-	            "li",
-	            { className: "nav-item active" },
-	            _react2.default.createElement(
-	              "a",
-	              { className: "nav-link", href: "#" },
-	              "Home",
-	              _react2.default.createElement(
-	                "span",
-	                { className: "sr-only" },
-	                "(current)"
-	              )
-	            )
+	            "span",
+	            { className: "sr-only" },
+	            "(current)"
 	          )
 	        )
-	      );
-	    }
-	  }]);
-	
-	  return Header;
-	}(_react2.default.Component);
+	      )
+	    )
+	  );
+	};
 
 /***/ },
 /* 173 */
@@ -22100,25 +22083,28 @@
 	      age: props.user.initialAge,
 	      status: 0
 	    };
-	    setTimeout(function () {
-	      _this.setState({
-	        status: 1
-	      });
-	    }, 3000);
 	    return _this;
 	  }
 	
 	  _createClass(Home, [{
 	    key: "onMakeOlder",
 	    value: function onMakeOlder() {
+	      var _this2 = this;
+	
 	      this.setState({
 	        age: this.state.age += 3
 	      });
+	
+	      setTimeout(function () {
+	        _this2.setState({
+	          status: 1
+	        });
+	      }, 3000);
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      return _react2.default.createElement(
 	        "div",
@@ -22162,11 +22148,16 @@
 	        _react2.default.createElement(
 	          "button",
 	          { onClick: function onClick() {
-	              return _this2.onMakeOlder();
+	              return _this3.onMakeOlder();
 	            }, className: "btn btn-primary" },
 	          "Make me older!"
 	        ),
-	        _react2.default.createElement("hr", null)
+	        _react2.default.createElement("hr", null),
+	        _react2.default.createElement(
+	          "button",
+	          { onClick: this.props.greet, className: "btn btn-default" },
+	          "Greet"
+	        )
 	      );
 	    }
 	  }]);
@@ -22178,7 +22169,8 @@
 	  user: _react2.default.PropTypes.shape({
 	    name: _react2.default.PropTypes.string,
 	    initialAge: _react2.default.PropTypes.number
-	  })
+	  }),
+	  greet: _react2.default.propTypes.func
 	};
 
 /***/ }
