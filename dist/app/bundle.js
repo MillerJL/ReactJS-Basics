@@ -81,9 +81,9 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
-	      user = {
+	      var user = {
 	        name: "Anna",
-	        hobbies: ["Sports", "Ayy Lmao"]
+	        hobbies: ["Sports", "Ayy Lmao", "Reading"]
 	      };
 	      return _react2.default.createElement(
 	        'div',
@@ -96,8 +96,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_Home.Home, { user: user }),
-	          _react2.default.createElement(_Home.Home, null)
+	          _react2.default.createElement(_Home.Home, { user: user })
 	        )
 	      );
 	    }
@@ -22118,7 +22117,6 @@
 	  _createClass(Home, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -22126,6 +22124,32 @@
 	          'p',
 	          null,
 	          'In a new Component!'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Your name is ',
+	          this.props.user.name
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'h4',
+	            null,
+	            'Hobbies'
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            null,
+	            this.props.user.hobbies.map(function (hobby, index) {
+	              return _react2.default.createElement(
+	                'li',
+	                { key: index },
+	                hobby
+	              );
+	            })
+	          )
 	        )
 	      );
 	    }
@@ -22133,6 +22157,14 @@
 	
 	  return Home;
 	}(_react2.default.Component);
+	
+	Home.propTypes = {
+	  user: _react2.default.PropTypes.shape({
+	    name: _react2.default.PropTypes.string,
+	    age: _react2.default.PropTypes.number,
+	    hobbies: _react2.default.PropTypes.object
+	  })
+	};
 
 /***/ }
 /******/ ]);

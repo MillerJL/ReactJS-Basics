@@ -16,3 +16,11 @@ export class Home extends React.Component {
     )
   }
 }
+
+Home.propTypes = {
+  user: React.PropTypes.shape({
+    name: React.PropTypes.string,
+    age: React.PropTypes.number,
+    hobbies: React.PropTypes.array
+  })
+}
