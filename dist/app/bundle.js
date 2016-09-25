@@ -81,6 +81,10 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
+	      user = {
+	        name: "Anna",
+	        hobbies: ["Sports", "Ayy Lmao"]
+	      };
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
@@ -92,6 +96,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
+	          _react2.default.createElement(_Home.Home, { user: user }),
 	          _react2.default.createElement(_Home.Home, null)
 	        )
 	      );
@@ -22113,14 +22118,7 @@
 	  _createClass(Home, [{
 	    key: 'render',
 	    value: function render() {
-	      var content = 'AIDS';
-	      if (true) {
-	        content = _react2.default.createElement(
-	          'p',
-	          null,
-	          'Hello!'
-	        );
-	      }
+	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -22128,8 +22126,7 @@
 	          'p',
 	          null,
 	          'In a new Component!'
-	        ),
-	        content
+	        )
 	      );
 	    }
 	  }]);

@@ -6,13 +6,17 @@ import { Home } from "./components/Home"
 
 class App extends React.Component {
   render() {
+    let user = {
+      name: "Anna",
+      hobbies: ["Sports", "Ayy Lmao", "Reading"]
+    }
     return (
       <div className="container">
         <div className="row">
           <Header/>
         </div>
         <div className="row">
-          <Home/>
+          <Home user={user}/>
         </div>
       </div>
     )
