@@ -8,7 +8,7 @@ class App extends React.Component {
   render() {
     let user = {
       name: "Anna",
-      age: 24,
+      initialAge: 24,
       hobbies: ["Sports", "Ayy Lmao", "Reading"]
     }
     return (

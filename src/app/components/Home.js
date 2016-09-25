@@ -3,18 +3,29 @@ import React from 'react'
 export class Home extends React.Component {
   constructor (props) {
     super()
-    this.age = props.user.age
+    this.state = {
+      age: props.user.initialAge,
+      status: 0
+    }
+    setTimeout(() => {
+      this.setState({
+        status: 1
+      })
+    }, 3000)
   }
 
   onMakeOlder () {
-    this.age++
+    this.setState({
+      age: this.state.age += 3
+    })
   }
 
   render () {
     return(
       <div>
         <hr/>
-        <p>Your name is { this.props.user.name }, your age is {this.age}</p>
+        <p>Your name is { this.props.user.name }, your age is { this.state.age }</p>
+        <p>Status: { this.state.status } </p>
         <div>
           <h4>Hobbies</h4>
           <ul>
@@ -31,6 +42,6 @@ export class Home extends React.Component {
 Home.propTypes = {
   user: React.PropTypes.shape({
     name: React.PropTypes.string,
-    age: React.PropTypes.number
+    initialAge: React.PropTypes.number
   })
 }

@@ -83,6 +83,7 @@
 	    value: function render() {
 	      var user = {
 	        name: "Anna",
+	        age: 24,
 	        hobbies: ["Sports", "Ayy Lmao", "Reading"]
 	      };
 	      return _react2.default.createElement(
@@ -22084,7 +22085,7 @@
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22108,49 +22109,65 @@
 	var Home = exports.Home = function (_React$Component) {
 	  _inherits(Home, _React$Component);
 	
-	  function Home() {
+	  function Home(props) {
 	    _classCallCheck(this, Home);
 	
-	    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+	
+	    _this.age = props.user.age;
+	    return _this;
 	  }
 	
 	  _createClass(Home, [{
-	    key: 'render',
+	    key: "onMakeOlder",
+	    value: function onMakeOlder() {
+	      this.age++;
+	    }
+	  }, {
+	    key: "render",
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
-	        'div',
+	        "div",
 	        null,
+	        _react2.default.createElement("hr", null),
 	        _react2.default.createElement(
-	          'p',
+	          "p",
 	          null,
-	          'In a new Component!'
+	          "Your name is ",
+	          this.props.user.name,
+	          ", your age is ",
+	          this.age
 	        ),
 	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Your name is ',
-	          this.props.user.name
-	        ),
-	        _react2.default.createElement(
-	          'div',
+	          "div",
 	          null,
 	          _react2.default.createElement(
-	            'h4',
+	            "h4",
 	            null,
-	            'Hobbies'
+	            "Hobbies"
 	          ),
 	          _react2.default.createElement(
-	            'ul',
+	            "ul",
 	            null,
 	            this.props.user.hobbies.map(function (hobby, index) {
 	              return _react2.default.createElement(
-	                'li',
+	                "li",
 	                { key: index },
 	                hobby
 	              );
 	            })
 	          )
-	        )
+	        ),
+	        _react2.default.createElement(
+	          "button",
+	          { onClick: function onClick() {
+	              return _this2.onMakeOlder();
+	            }, className: "btn btn-primary" },
+	          "Make me older!"
+	        ),
+	        _react2.default.createElement("hr", null)
 	      );
 	    }
 	  }]);
