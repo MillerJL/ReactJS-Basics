@@ -96,7 +96,15 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_Home.Home, { user: user })
+	          _react2.default.createElement(
+	            _Home.Home,
+	            { user: user },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'That\'s it, that\'s everything'
+	            )
+	          )
 	        )
 	      );
 	    }
@@ -22150,7 +22158,9 @@
 	              );
 	            })
 	          )
-	        )
+	        ),
+	        this.props.children,
+	        _react2.default.createElement('hr', null)
 	      );
 	    }
 	  }]);
@@ -22162,7 +22172,7 @@
 	  user: _react2.default.PropTypes.shape({
 	    name: _react2.default.PropTypes.string,
 	    age: _react2.default.PropTypes.number,
-	    hobbies: _react2.default.PropTypes.object
+	    hobbies: _react2.default.PropTypes.array
 	  })
 	};
 
